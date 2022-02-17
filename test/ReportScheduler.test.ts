@@ -262,4 +262,26 @@ describe("ReportScheduler toText function", () => {
     expect(scheduler.toText("fr")).toBe("Le 4e jour chaque 2 mois");
   });
 
+  test("if using en-CA and fr-CA locale", () => {
+    let scheduler = new ReportScheduler({
+      frequency: "MONTHLY",
+      interval: 2, 
+      startDate: new Date(Date.UTC(2000,0,1)),
+      byMonthDay: 4
+    });
+    expect(scheduler.toText("en-CA")).toBe("Every 2 months on the 4th");
+    expect(scheduler.toText("fr-CA")).toBe("Le 4e jour chaque 2 mois");
+  });
+
+  test("if using en-US fr-Fr locale", () => {
+    let scheduler = new ReportScheduler({
+      frequency: "MONTHLY",
+      interval: 2, 
+      startDate: new Date(Date.UTC(2000,0,1)),
+      byMonthDay: 4
+    });
+    expect(scheduler.toText("en-US")).toBe("Every 2 months on the 4th");
+    expect(scheduler.toText("fr-FR")).toBe("Le 4e jour chaque 2 mois");
+  });
+
 });

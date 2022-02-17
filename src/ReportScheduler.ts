@@ -110,6 +110,7 @@ export class ReportScheduler {
     }
 
     toText(language: string = 'en') {
+        language = language.startsWith('fr') ? 'fr' : 'en';
         return this.frequencyScheduler.toText(language);
     }
 }
