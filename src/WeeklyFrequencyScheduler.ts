@@ -6,10 +6,10 @@ export class WeeklyFrequencyScheduler implements IFrequencyScheduler {
     startDate: string;
     byWeekDay: Array<number>;
 
-    constructor(interval: number, startDate: string, byWeekDay: Array<number>) {
+    constructor(interval: number, startDate: string, byWeekDay: Array<number> | undefined = undefined) {
         this.interval = interval;
         this.startDate = startDate;
-        this.byWeekDay = byWeekDay;
+        this.byWeekDay = byWeekDay ?? [new Date(startDate).getUTCDay()];
         this.byWeekDay.sort((a, b) => {
             return a - b;
         });

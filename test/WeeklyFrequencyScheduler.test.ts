@@ -54,6 +54,30 @@ describe("WeeklyFrequencyScheduler nextReportDate function", () => {
     expect(reportDate).toBe("2000-01-24");
   });
 
+  test("if current date after start date and week days not defined, report date should be next day based on startDate day", () => {
+    let startDate = "2000-01-01";
+    let currentDate = "2000-01-03";
+    let scheduler = new WeeklyFrequencyScheduler(1, startDate, undefined);
+    let reportDate = scheduler.nextReportDate(currentDate);
+    expect(reportDate).toBe("2000-01-08");
+  });
+
+  test("if current date after start date and week days not defined, report date should be next day based on startDate day", () => {
+    let startDate = "2000-01-01";
+    let currentDate = "2000-01-03";
+    let scheduler = new WeeklyFrequencyScheduler(1, startDate);
+    let reportDate = scheduler.nextReportDate(currentDate);
+    expect(reportDate).toBe("2000-01-08");
+  });
+
+  test("if current date after start date and week days not defined, report date should be the third day based on startDate day", () => {
+    let startDate = "2000-01-01";
+    let currentDate = "2000-01-03";
+    let scheduler = new WeeklyFrequencyScheduler(3, startDate);
+    let reportDate = scheduler.nextReportDate(currentDate);
+    expect(reportDate).toBe("2000-01-22");
+  });
+
   //by week day tests
 
   test("if start date on monday and 'by week day' includes tuesday, report date should be tomorrow", () => {
