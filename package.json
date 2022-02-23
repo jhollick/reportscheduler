@@ -1,6 +1,6 @@
 {
   "name": "reportscheduler",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Determine next report dates based on Simplified RRule",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
